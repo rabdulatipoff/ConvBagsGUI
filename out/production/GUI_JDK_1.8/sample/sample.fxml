@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+
+
+
+
+<GridPane alignment="center" hgap="10" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1600.0" vgap="10" xmlns="http://javafx.com/javafx/12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <columnConstraints>
+        <ColumnConstraints hgrow="ALWAYS" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1600.0" tabClosingPolicy="UNAVAILABLE" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+            <tabs>
+                <Tab fx:id="mainTab" closable="false" text="Главная">
+                    <content>
+                        <AnchorPane>
+                            <children>
+                                <ButtonBar layoutX="132.0" layoutY="471.0" prefHeight="40.0" prefWidth="242.0" />
+                                <Button fx:id="startButton" layoutX="150.0" layoutY="701.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#start" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: green;" text="Start" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="410.0">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </Button>
+                                <MediaView fx:id="mediaView" fitHeight="630.0" fitWidth="1120.0" layoutY="25.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="35.0">
+                                    <cursor>
+                                        <Cursor fx:constant="DEFAULT" />
+                                    </cursor>
+                                    <viewport>
+                                        <Rectangle2D />
+                                    </viewport>
+                                    <effect>
+                                        <DropShadow />
+                                    </effect>
+                                </MediaView>
+                                <Button fx:id="pauseButton" layoutX="250.0" layoutY="701.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pause" prefHeight="50.0" prefWidth="100.0" text="Pause" textAlignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="510.0">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="openButton" layoutX="95.0" layoutY="673.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#open" prefHeight="50.0" prefWidth="100.0" text="Open" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="35.0">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="stopButton" layoutX="350.0" layoutY="701.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stop" prefHeight="50.0" prefWidth="100.0" text="Stop" textAlignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="610.0">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="screenShotButton" layoutX="1017.0" layoutY="701.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#snapshot" prefHeight="50.0" prefWidth="138.0" text="Screenshot" textAlignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="1017.0">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </Button>
+                                <ImageView fx:id="imageViewTop" fitHeight="200.0" fitWidth="355.0" layoutX="1086.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1200.0" AnchorPane.topAnchor="35.0">
+                                    <effect>
+                                        <DropShadow />
+                                    </effect>
+                                </ImageView>
+                                <ImageView fx:id="imageViewCenter" fitHeight="200.0" fitWidth="355.0" layoutX="1295.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1200.0" AnchorPane.topAnchor="250.0">
+                                    <effect>
+                                        <DropShadow />
+                                    </effect>
+                                </ImageView>
+                                <ImageView fx:id="imageViewBottom" fitHeight="200.0" fitWidth="355.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="106.0" AnchorPane.leftAnchor="1200.0">
+                                    <effect>
+                                        <DropShadow />
+                                    </effect>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Статистика">
+                    <content>
+                        <AnchorPane />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</GridPane>
+
