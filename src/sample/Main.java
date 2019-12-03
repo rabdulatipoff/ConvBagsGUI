@@ -18,8 +18,7 @@ public class Main extends Application {
         primaryStage.setMinHeight(830);
         primaryStage.show();
     }
-
-
+    
     public static void main(String[] args) {
         launch(args);
     }
