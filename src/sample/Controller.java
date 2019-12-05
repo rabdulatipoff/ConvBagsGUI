@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,21 +13,45 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
-import javax.imageio.ImageIO;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
+
+
 public class Controller {
+
+    public static int totalRecognized = 0;
+    public static int incorrectlyRecognized = 0;
+    public static int correctlyRecognized = 0;
+    public static float precision = 0f;
+
+    /**
+     * Список для хранения изображений
+     */
+    public static ArrayList<WritableImage> screenShots = new ArrayList<WritableImage>();
+
+    /**
+     * Список для хранения имен изображений
+     */
+    public static ArrayList<String> screenshotsNames = new ArrayList<>();
+
+    MediaPlayer mp = null;
+    FileChooserHelper fileChooserHelper = new FileChooserHelper("Select Video", "user.dir");
 
     @FXML
     MediaView mediaView = new MediaView();
-    MediaPlayer mp = null;
-    FileChooserHelper fileChooserHelper = new FileChooserHelper("Select Video", "user.dir");
-    ArrayList<WritableImage> screenShoots = new ArrayList<WritableImage>();
 
+    /**
+     * Label для вывода статистики
+     */
+    @FXML
+    Label statisticLabel = new Label();
+
+    /**
+     * ImageView на первой вкладке
+     */
     @FXML
     ImageView imageViewTop = new ImageView();
     @FXML
@@ -36,18 +59,29 @@ public class Controller {
     @FXML
     ImageView imageViewBottom = new ImageView();
 
-    @FXML
-    ImageView statView = new ImageView();
-
-    @FXML
-    Label statisticLabel = new Label();
-
-
     /**
-     * Тестовый ImageView на второй вкладке
+     * ImageView на второй вкладке
      */
     @FXML
     ImageView imageView_0 = new ImageView();
+
+
+
+    /**
+     *  Инициализация окна
+     */
+    @FXML
+    private void initialize() {
+        statisticLabel.setText(correctlyRecognized + " / " + totalRecognized);
+
+        screenShots.add(null);
+        screenShots.add(null);
+        screenShots.add(null);
+
+        screenshotsNames.add(null);
+        screenshotsNames.add(null);
+        screenshotsNames.add(null);
+    }
 
     /**
      * Событие для открытия видео
@@ -68,10 +102,6 @@ public class Controller {
         }
 
         mediaView.setMediaPlayer(mp);
-
-        screenShoots.add(null);
-        screenShoots.add(null);
-        screenShoots.add(null);
     }
 
     /**
@@ -105,49 +135,58 @@ public class Controller {
         mp.stop();
     }
 
+    /**
+     * Событие для создания скриншота
+     * @param event
+     */
     @FXML
     private void snapshot(ActionEvent event) {
+
         WritableImage image = mediaView.snapshot(null, null);
-        screenShoots.add(image);
-
-        imageViewTop.setImage(screenShoots.get(screenShoots.size() - 3));
-        imageViewCenter.setImage(screenShoots.get(screenShoots.size() - 2));
-        imageViewBottom.setImage(screenShoots.get(screenShoots.size() - 1));
-
-        statView.setImage(screenShoots.get(0));
-
         double time = mp.getCurrentTime().toSeconds();
-        File file = new File(".\\Screenshots\\" + time + ".png");
-        try {
-            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
-        } catch (IOException e) {
-            // TODO: handle exception here
-        }
 
-        statisticLabel.setText("87 / 100");
+        screenShots.add(image);
+        screenshotsNames.add(String.valueOf(time));
 
+        imageViewTop.setImage(screenShots.get(screenShots.size() - 1));
+        imageViewCenter.setImage(screenShots.get(screenShots.size() - 2));
+        imageViewBottom.setImage(screenShots.get(screenShots.size() - 3));
 
         /**
-         * Добовляю первое изображение из массива изображений на ImageView
+         * Добовляю первое изображение из массива изображений
+         * на ImageView второй вкладки
          */
-        imageView_0.setImage(screenShoots.get(0));
+        imageView_0.setImage(screenShots.get(screenShots.size() - 3));
 
+        totalRecognized++;
+        correctlyRecognized = totalRecognized - incorrectlyRecognized;
+        precision = ((float) correctlyRecognized / (float) totalRecognized) * 100;
 
+        statisticLabel.setText(correctlyRecognized + " / " + totalRecognized + "   Точность: " + precision + "%");
+    }
 
-//        Stage choiceStage = new Stage();
-//        Parent root = null;
-//        try {
-//            root = FXMLLoader.load(getClass().getResource("ScreenShootScene.fxml"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        choiceStage.setScene(new Scene(root, 1615, 830));
-//        choiceStage.setMaxWidth(1615);
-//        choiceStage.setMaxHeight(830);
-//        choiceStage.setMinWidth(1615);
-//        choiceStage.setMinHeight(830);
-//        choiceStage.show();
+    /**
+     * Событие для открытия окна для просмотра скриншота
+     * @param event
+     */
+    @FXML
+    private void openChoiceStage(ActionEvent event) {
+        Stage choiceStage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("ScreenShootScene.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        choiceStage.setScene(new Scene(root, 1615, 830));
+        choiceStage.setMaxWidth(1615);
+        choiceStage.setMaxHeight(830);
+        choiceStage.setMinWidth(1615);
+        choiceStage.setMinHeight(830);
+        choiceStage.show();
+
+        mp.pause();
     }
 }
 
