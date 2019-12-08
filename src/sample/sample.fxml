@@ -82,12 +82,12 @@
                                         <DropShadow />
                                     </effect>
                                 </ImageView>
-                        <Label layoutX="1200.0" layoutY="701.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="69.0" text="Верно:" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="1200.0">
+                        <Label layoutX="1200.0" layoutY="701.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="230.0" text="Количество скриншотов:" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="1200.0">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="statisticLabel" layoutX="1295.0" layoutY="726.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" textAlignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="1275.0" AnchorPane.rightAnchor="45.0">
+                        <Label fx:id="statisticLabel" layoutX="1295.0" layoutY="726.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="120.0" textAlignment="CENTER" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="45.0">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -105,7 +105,25 @@
                     <content>
                         <AnchorPane>
                      <children>
-                        <ImageView fx:id="imageView_0" fitHeight="150.0" fitWidth="200.0" layoutX="121.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageView_0" fitHeight="247.0" fitWidth="440.0" layoutX="121.0" layoutY="85.0" onMouseClicked="#openChoiceStage" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="5.0" />
+                        <Button layoutY="2.0" mnemonicParsing="false" onAction="#goLeft" prefWidth="90.0" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#goRight" prefWidth="90.0" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <ImageView fx:id="imageView_3" fitHeight="247.0" fitWidth="440.0" layoutX="131.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="262.0" />
+                        <ImageView fx:id="imageView_6" fitHeight="247.0" fitWidth="440.0" layoutX="131.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="519.0" />
+                        <ImageView fx:id="imageView_1" fitHeight="247.0" fitWidth="440.0" layoutX="131.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="580.0" AnchorPane.topAnchor="5.0" />
+                        <ImageView fx:id="imageView_4" fitHeight="247.0" fitWidth="440.0" layoutX="141.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="580.0" AnchorPane.topAnchor="262.0" />
+                        <ImageView fx:id="imageView_7" fitHeight="247.0" fitWidth="440.0" layoutX="151.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="580.0" AnchorPane.topAnchor="519.0" />
+                        <ImageView fx:id="imageView_2" fitHeight="247.0" fitWidth="440.0" layoutX="141.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1045.0" AnchorPane.topAnchor="5.0" />
+                        <ImageView fx:id="imageView_5" fitHeight="247.0" fitWidth="440.0" layoutX="151.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1045.0" AnchorPane.topAnchor="262.0" />
+                        <ImageView fx:id="imageView_8" fitHeight="247.0" fitWidth="440.0" layoutX="161.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1045.0" AnchorPane.topAnchor="519.0" />
                      </children></AnchorPane>
                     </content>
                 </Tab>

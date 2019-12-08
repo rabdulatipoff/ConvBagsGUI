@@ -1,8 +1,8 @@
 package sample;
 
-import javafx.stage.FileChooser;
+        import javafx.stage.FileChooser;
 
-import java.io.File;
+        import java.io.File;
 
 public class FileChooserHelper {
 

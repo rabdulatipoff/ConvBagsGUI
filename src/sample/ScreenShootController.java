@@ -35,7 +35,7 @@ public class ScreenShootController {
     public void initialize() {
 
         totalRecognizedSSC = Controller.totalRecognized;
-        incorrectlyRecognizedSSC = Controller.incorrectlyRecognized;
+        incorrectlyRecognizedSSC = 0;
         correctlyRecognizedSSC = Controller.correctlyRecognized;
         precisionSSC = ((float) correctlyRecognizedSSC / (float) totalRecognizedSSC) * 100f;
 

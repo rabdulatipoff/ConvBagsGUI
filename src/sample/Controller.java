@@ -23,9 +23,10 @@ import java.util.ArrayList;
 public class Controller {
 
     public static int totalRecognized = 0;
-    public static int incorrectlyRecognized = 0;
     public static int correctlyRecognized = 0;
-    public static float precision = 0f;
+
+    private int startingIndex = 0;
+    private boolean isEnd = false;
 
     /**
      * Список для хранения изображений
@@ -64,6 +65,22 @@ public class Controller {
      */
     @FXML
     ImageView imageView_0 = new ImageView();
+    @FXML
+    ImageView imageView_1 = new ImageView();
+    @FXML
+    ImageView imageView_2 = new ImageView();
+    @FXML
+    ImageView imageView_3 = new ImageView();
+    @FXML
+    ImageView imageView_4 = new ImageView();
+    @FXML
+    ImageView imageView_5 = new ImageView();
+    @FXML
+    ImageView imageView_6 = new ImageView();
+    @FXML
+    ImageView imageView_7 = new ImageView();
+    @FXML
+    ImageView imageView_8 = new ImageView();
 
 
 
@@ -72,15 +89,15 @@ public class Controller {
      */
     @FXML
     private void initialize() {
-        statisticLabel.setText(correctlyRecognized + " / " + totalRecognized);
+        statisticLabel.setText("0");
 
-        screenShots.add(null);
-        screenShots.add(null);
-        screenShots.add(null);
-
-        screenshotsNames.add(null);
-        screenshotsNames.add(null);
-        screenshotsNames.add(null);
+//        screenShots.add(null);
+//        screenShots.add(null);
+//        screenShots.add(null);
+//
+//        screenshotsNames.add(null);
+//        screenshotsNames.add(null);
+//        screenshotsNames.add(null);
     }
 
     /**
@@ -148,21 +165,52 @@ public class Controller {
         screenShots.add(image);
         screenshotsNames.add(String.valueOf(time));
 
-        imageViewTop.setImage(screenShots.get(screenShots.size() - 1));
-        imageViewCenter.setImage(screenShots.get(screenShots.size() - 2));
-        imageViewBottom.setImage(screenShots.get(screenShots.size() - 3));
+        if (screenShots.size() > 0) {
+            imageViewTop.setImage(screenShots.get(screenShots.size() - 1));
+        }
+        if (screenShots.size() > 1) {
+            imageViewCenter.setImage(screenShots.get(screenShots.size() - 2));
+        }
+        if (screenShots.size() > 2) {
+            imageViewBottom.setImage(screenShots.get(screenShots.size() - 3));
+        }
 
         /**
-         * Добовляю первое изображение из массива изображений
+         * Добовляю изображения из массива изображений
          * на ImageView второй вкладки
          */
-        imageView_0.setImage(screenShots.get(screenShots.size() - 3));
+        if (screenShots.size() > 0) {
+            imageView_0.setImage(screenShots.get(startingIndex + 0));
+        }
+        if (screenShots.size() > 1) {
+            imageView_1.setImage(screenShots.get(startingIndex + 1));
+        }
+        if (screenShots.size() > 2) {
+            imageView_2.setImage(screenShots.get(startingIndex + 2));
+        }
+        if (screenShots.size() > 3) {
+            imageView_3.setImage(screenShots.get(startingIndex + 3));
+        }
+        if (screenShots.size() > 4) {
+            imageView_4.setImage(screenShots.get(startingIndex + 4));
+        }
+        if (screenShots.size() > 5) {
+            imageView_5.setImage(screenShots.get(startingIndex + 5));
+        }
+        if (screenShots.size() > 6) {
+            imageView_6.setImage(screenShots.get(startingIndex + 6));
+        }
+        if (screenShots.size() > 7) {
+            imageView_7.setImage(screenShots.get(startingIndex + 7));
+        }
+        if (screenShots.size() > 8) {
+            imageView_8.setImage(screenShots.get(startingIndex + 8));
+        }
+
+        statisticLabel.setText(String.valueOf(screenShots.size()));
 
         totalRecognized++;
-        correctlyRecognized = totalRecognized - incorrectlyRecognized;
-        precision = ((float) correctlyRecognized / (float) totalRecognized) * 100;
-
-        statisticLabel.setText(correctlyRecognized + " / " + totalRecognized + "   Точность: " + precision + "%");
+        correctlyRecognized = totalRecognized;
     }
 
     /**
@@ -180,13 +228,143 @@ public class Controller {
         }
 
         choiceStage.setScene(new Scene(root, 1615, 830));
-        choiceStage.setMaxWidth(1615);
-        choiceStage.setMaxHeight(830);
-        choiceStage.setMinWidth(1615);
-        choiceStage.setMinHeight(830);
+        choiceStage.setMaxWidth(1920);
+        choiceStage.setMaxHeight(986);
+        choiceStage.setMinWidth(808);
+        choiceStage.setMinHeight(415);
         choiceStage.show();
 
         mp.pause();
+    }
+
+    /**
+     * Метод для перехода на страницу вправо
+     * @param event
+     */
+    @FXML
+    private void goRight(ActionEvent event) {
+
+        if (!isEnd) {
+            startingIndex += 9;
+        }
+
+        /**
+         * Очищаю все ImageView при переходе на другую страницу
+         */
+
+        imageView_0.setImage(null);
+        imageView_1.setImage(null);
+        imageView_2.setImage(null);
+        imageView_3.setImage(null);
+        imageView_4.setImage(null);
+        imageView_5.setImage(null);
+        imageView_6.setImage(null);
+        imageView_7.setImage(null);
+        imageView_8.setImage(null);
+
+        /**
+         * Добовляю изображения из массива изображений
+         * на ImageView второй вкладки
+         */
+        try {
+
+            if (screenShots.size() > (startingIndex + 0)) {
+                imageView_0.setImage(screenShots.get(startingIndex + 0));
+            }
+            if (screenShots.size() > (startingIndex + 1)) {
+                imageView_1.setImage(screenShots.get(startingIndex + 1));
+            }
+            if (screenShots.size() > (startingIndex + 2)) {
+                imageView_2.setImage(screenShots.get(startingIndex + 2));
+            }
+            if (screenShots.size() > (startingIndex + 3)) {
+                imageView_3.setImage(screenShots.get(startingIndex + 3));
+            }
+            if (screenShots.size() > (startingIndex + 4)) {
+                imageView_4.setImage(screenShots.get(startingIndex + 4));
+            }
+            if (screenShots.size() > (startingIndex + 5)) {
+                imageView_5.setImage(screenShots.get(startingIndex + 5));
+            }
+            if (screenShots.size() > (startingIndex + 6)) {
+                imageView_6.setImage(screenShots.get(startingIndex + 6));
+            }
+            if (screenShots.size() > (startingIndex + 7)) {
+                imageView_7.setImage(screenShots.get(startingIndex + 7));
+            }
+            if (screenShots.size() > (startingIndex + 8)) {
+                imageView_8.setImage(screenShots.get(startingIndex + 8));
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+
+            isEnd = true;
+            System.out.println("Скриншоты кончились!");
+        }
+    }
+
+    /**
+     * Метод для перехода на страницу влево
+     * @param event
+     */
+    @FXML
+    private void goLeft(ActionEvent event) {
+
+        if (!isEnd) {
+            startingIndex -= 9;
+        }
+
+        /**
+         * Очищаю все ImageView при переходе на другую страницу
+         */
+
+        imageView_0.setImage(null);
+        imageView_1.setImage(null);
+        imageView_2.setImage(null);
+        imageView_3.setImage(null);
+        imageView_4.setImage(null);
+        imageView_5.setImage(null);
+        imageView_6.setImage(null);
+        imageView_7.setImage(null);
+        imageView_8.setImage(null);
+
+        /**
+         * Добовляю изображения из массива изображений
+         * на ImageView второй вкладки
+         */
+        try {
+
+            if (screenShots.size() > (startingIndex + 0)) {
+                imageView_0.setImage(screenShots.get(startingIndex + 0));
+            }
+            if (screenShots.size() > (startingIndex + 1)) {
+                imageView_1.setImage(screenShots.get(startingIndex + 1));
+            }
+            if (screenShots.size() > (startingIndex + 2)) {
+                imageView_2.setImage(screenShots.get(startingIndex + 2));
+            }
+            if (screenShots.size() > (startingIndex + 3)) {
+                imageView_3.setImage(screenShots.get(startingIndex + 3));
+            }
+            if (screenShots.size() > (startingIndex + 4)) {
+                imageView_4.setImage(screenShots.get(startingIndex + 4));
+            }
+            if (screenShots.size() > (startingIndex + 5)) {
+                imageView_5.setImage(screenShots.get(startingIndex + 5));
+            }
+            if (screenShots.size() > (startingIndex + 6)) {
+                imageView_6.setImage(screenShots.get(startingIndex + 6));
+            }
+            if (screenShots.size() > (startingIndex + 7)) {
+                imageView_7.setImage(screenShots.get(startingIndex + 7));
+            }
+            if (screenShots.size() > (startingIndex + 8)) {
+                imageView_8.setImage(screenShots.get(startingIndex + 8));
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+
+            isEnd = true;
+            System.out.println("Скриншоты кончились!");
+        }
     }
 }
 
