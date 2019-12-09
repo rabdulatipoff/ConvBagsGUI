@@ -19,6 +19,7 @@ public class ScreenShootController {
     public static int correctlyRecognizedSSC;
     public static float precisionSSC;
 
+
     @FXML
     ImageView imageView = new ImageView();
 

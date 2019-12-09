@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.opencv.core.Core;
+
+import java.awt.*;
 
 public class Main extends Application {
 
@@ -20,6 +23,8 @@ public class Main extends Application {
     }
     
     public static void main(String[] args) {
+        // load the native OpenCV library
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         launch(args);
     }
 }
